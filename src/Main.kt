@@ -39,23 +39,24 @@ fun main() {
         },
 
         Requisito("Todas as vogais da senha devem ser maiúsculas") {
-            val temVogalMinuscula = it.any { c -> c in "aeiou" }
-
-            !temVogalMinuscula
+            !it.any { c -> c in "aeiou" }
         },
 
         Requisito("Todas as consoantes da senha devem ser minúsculas") {
-            val temConsoanteMaiuscula = it.any { c -> c in "bcdfghjklmnpqrstvwxyz".uppercase()}
-
-            !temConsoanteMaiuscula
+            !it.any { c -> c in "bcdfghjklmnpqrstvwxyz".uppercase()}
         },
 
         Requisito("A senha deve ter 10 números") {
             it.filter{ char -> char.isDigit() }.length == 10
         },
 
-        Requisito("A senhha deve ter o nome da matéria (sem acentos)") {
+        Requisito("A senha deve ter o nome da matéria (sem acentos)") {
             it.lowercase().contains("solucoes mobile")
+        },
+
+        Requisito("A senha deve conter o mês atual em números") {
+            val mesAtual = java.time.LocalDate.now().monthValue.toString()
+            it.contains(mesAtual)
         }
     )
 
@@ -83,4 +84,4 @@ fun main() {
     } while (!senhaAprovada)
 }
 
-/* nIcOlAs20265👍11111sOlUcOEs mObIlE */
+/* nIcOlAs20263👍31111sOlUcOEs mObIlE */
